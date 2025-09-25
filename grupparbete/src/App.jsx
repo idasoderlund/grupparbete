@@ -10,7 +10,7 @@ function App() {
 
   return (
     <div>
-      <h1 style={{ textAlign: "center" }}>BudgetRedigerare</h1>
+      <h1 style={{ textAlign: "center" }}>Redigera budget:</h1>
       <UploadFile onFileUpload={handleFileUpload} />
     </div>
   );

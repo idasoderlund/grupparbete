@@ -1,6 +1,6 @@
 // Ida - skapa komponent för filuppladdning
 import React, { useState } from "react";
-import styles from "./UploadFile.modules.css";
+import styles from "./UploadFile.module.css";
 
 const UploadFile = ({ onFileUpload }) => {
   const [googleSheetUrl, setGoogleSheetUrl] = useState("");
