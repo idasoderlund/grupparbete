@@ -40,7 +40,7 @@ const UploadFile = ({ onFileUpload }) => {
           className={styles.input}
         ></input>
         <button type="submit" className={styles.button}>
-          Ladda...
+          Ladda upp fil...
         </button>
       </form>
     </div>
