@@ -14,7 +14,7 @@ const UploadFile = ({ onFileUpload }) => {
 
   const handleGoogleSheetSubmit = (e) => {
     e.preventDefault();
-    if (googleSheetUrl.icludes("docs.google.com/spreadsheets")) {
+    if (googleSheetUrl.includes("docs.google.com/spreadsheets")) {
       onFileUpload(googleSheetUrl);
     } else {
       alert("Ogiltig  Google Sheet-länk");
@@ -61,7 +61,7 @@ const styles = {
   },
 
   form: {
-    dispay: "flex",
+    display: "flex",
     flexDirection: "column",
     gap: "0.5rem",
   },
