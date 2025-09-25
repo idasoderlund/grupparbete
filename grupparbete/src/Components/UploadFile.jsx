@@ -25,7 +25,7 @@ const UploadFile = ({ onFileUpload }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Ladda upp Excel eller Google Sheet</h2>
+      <h2>Ladda upp Excel / Google Sheet</h2>
 
       <input type="file" accept=".xlsx" onChange={handleFileChange} />
 
