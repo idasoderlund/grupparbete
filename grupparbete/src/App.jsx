@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState } from "react";
 import UploadFile from "./Components/UploadFile";
+import ExcelParser from "./Components/ExcelParser";  
 import "./App.css";
 
+
 function App() {
+  const [file, setFile] = useState(null);
+
   const handleFileUpload = (data) => {
     console.log("Uppladdad fil eller länk:", data);
-    //Här ska  i skicka vidare till excel-parser eller sheets API
+
+    
+    if (data instanceof File) {
+      setFile(data);
+    }
   };
 
   return (
@@ -21,9 +29,15 @@ function App() {
       >
         Redigera budget ⬇️
       </h1>
+
+      {}
       <UploadFile onFileUpload={handleFileUpload} />
+
+      {}
+      {file && <ExcelParser file={file} />}
     </div>
   );
 }
 
 export default App;
+
