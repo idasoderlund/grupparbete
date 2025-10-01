@@ -1,11 +1,25 @@
 :root {
+  /* FÄRGPALETT - Använd dessa variabler för att hålla färgerna konsekventa */
+  --primary-green: #4a7c59;
+  --secondary-green: #6b9d7a;
+  --accent-green: #8fbc8f;
+  --light-green: #b6ceb4;
+
+  --light-bg: #f5f9f7;
+  --white: #ffffff;
+
+  --text-dark: #1a2e1a;
+
+  --shadow: rgba(0, 0, 0, 0.15);
+  --shadow-hover: rgba(0, 0, 0, 0.25);
+
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--text-dark);
+  background: linear-gradient(135deg, var(--light-bg), var(--light-green));
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -15,11 +29,12 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: var(--primary-green);
   text-decoration: inherit;
+  transition: color 0.3s ease;
 }
 a:hover {
-  color: #535bf2;
+  color: var(--secondary-green);
 }
 
 body {
@@ -35,34 +50,33 @@ h1 {
   line-height: 1.1;
 }
 
+/* Knappar - grön gradient med animerad hover */
 button {
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green),
+    var(--secondary-green)
+  );
+  background-size: 200% 200%;
+  background-position: left;
+  color: var(--white);
   cursor: pointer;
-  transition: border-color 0.25s;
+  transition: all 0.6s ease;
+  box-shadow: 0 2px 4px var(--shadow);
 }
 button:hover {
-  border-color: #646cff;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px var(--shadow-hover);
+  background-position: right;
 }
 button:focus,
 button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
+  outline: 3px solid var(--accent-green);
+  outline-offset: 2px;
 }

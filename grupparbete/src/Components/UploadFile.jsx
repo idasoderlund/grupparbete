@@ -4,10 +4,12 @@ import styles from "./UploadFile.module.css";
 
 const UploadFile = ({ onFileUpload }) => {
   const [googleSheetUrl, setGoogleSheetUrl] = useState("");
+  const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file && file.name.endsWith(".xlsx")) {
+      setSelectedFile(file);
       onFileUpload(file);
     } else {
       alert("Endast .xlsx-filer stöds just nu");
@@ -25,9 +27,23 @@ const UploadFile = ({ onFileUpload }) => {
 
   return (
     <div className={styles.container}>
-      <h2>Ladda upp Excel / Google Sheet</h2>
+      <h1 className={styles.title}>Redigera budget</h1>
 
-      <input type="file" accept=".xlsx" onChange={handleFileChange} />
+      <div className={styles.fileRow}>
+        <input
+          type="file"
+          accept=".xlsx"
+          onChange={handleFileChange}
+          id="file-input"
+          className={styles.fileInput}
+        />
+        <label htmlFor="file-input" className={styles.button}>
+          Välj fil
+        </label>
+        <span className={styles.fileName}>
+          {selectedFile ? selectedFile.name : ".xlsx, .csv, .xls"}
+        </span>
+      </div>
 
       <div className={styles.or}>eller</div>
 
