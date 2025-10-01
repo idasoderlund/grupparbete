@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { AgGridReact } from "ag-grid-react";
 import { ModuleRegistry, AllCommunityModule } from "ag-grid-community";
+import ExportPDF from "./ExportPDF";
 
 ModuleRegistry.registerModules([AllCommunityModule]);
 
@@ -9,6 +10,7 @@ import "ag-grid-community/styles/ag-theme-alpine.css";
 
 const EditableTable = ({ rowData, columnDefs }) => {
   console.log("📥 EditableTable props:", { rowData, columnDefs });
+  const gridRef = useRef(null);
 
   const [tableHeight, setTableHeight] = useState(400);
   const [tableWidth, setTableWidth] = useState(800); // pixels instead of percentage
@@ -71,6 +73,7 @@ const EditableTable = ({ rowData, columnDefs }) => {
       >
         <AgGridReact
           theme="legacy"
+          ref={gridRef} //skickar datan i tabellen till exportPdf
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={{
@@ -135,6 +138,7 @@ const EditableTable = ({ rowData, columnDefs }) => {
       >
         Ändra Storlek
       </div>
+      <ExportPDF gridRef={gridRef} />
     </>
   );
 };
