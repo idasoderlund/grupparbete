@@ -1,26 +1,58 @@
+/* Uppladdningsruta */
 .container {
-  color: #b6ceb4;
-  padding: 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  max-width: 400px;
+  color: var(--text-dark, #1a2e1a);
+  padding: 2rem;
+  border: 2px solid var(--accent-green, #8fbc8f);
+  border-radius: 16px;
+  max-width: 450px;
   margin: 2rem auto;
   text-align: center;
-  box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
-  font-family: "Red Hat Text";
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15), 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Red Hat Text", system-ui, sans-serif;
+  background: linear-gradient(135deg, #ffffff, #f5f9f7);
+  backdrop-filter: blur(10px);
 }
 
 .container:hover {
-  transform: scale(1.02);
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(74, 124, 89, 0.25), 0 4px 8px rgba(0, 0, 0, 0.15);
+  border-color: var(--primary-green, #4a7c59);
   transition: all 0.3s ease;
-  background-color: #f0f0f0;
-  color: #000;
 }
 
+/* Rubrik */
+.title {
+  font-family: "Mr Bedfort", cursive;
+  font-size: 2.5rem;
+  color: var(--primary-green, #4a7c59);
+  font-weight: 400;
+  margin-bottom: 1.5rem;
+  margin-top: 0;
+  text-shadow: 2px 2px 4px rgba(255, 255, 255, 0.6),
+    0 1px 2px rgba(74, 124, 89, 0.2);
+}
+
+/* "eller" text med linjer */
 .or {
-  margin: 1rem 0;
-  font-weight: bold;
+  margin: 1.5rem 0;
+  font-weight: 600;
+  color: var(--secondary-green, #6b9d7a);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.or::before,
+.or::after {
+  content: "";
+  flex: 1;
+  height: 2px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-green, #8fbc8f),
+    transparent
+  );
 }
 
 .form {
@@ -29,17 +61,67 @@
   gap: 0.5rem;
 }
 
+/* Input-fält */
 .input {
-  padding: 0.5rem;
+  padding: 0.75rem 1rem;
   font-size: 1rem;
+  border: 2px solid var(--light-green, #b6ceb4);
+  border-radius: 8px;
+  background-color: var(--white, #ffffff);
+  transition: all 0.3s ease;
+  color: var(--text-dark, #1a2e1a);
 }
 
+.input:focus {
+  outline: none;
+  border-color: var(--primary-green, #4a7c59);
+  box-shadow: 0 0 0 3px rgba(74, 124, 89, 0.1);
+}
+
+.fileInput {
+  display: none;
+}
+
+.fileRow {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.fileName {
+  color: var(--secondary-green, #6b9d7a);
+  font-size: 0.9rem;
+  font-style: italic;
+  font-weight: 500;
+}
+
+/* Knappar - animerad gradient */
 .button {
-  padding: 0.5rem;
+  padding: 0.75rem 1.5rem;
   font-size: 1rem;
-  background-color: #4f46e5;
-  color: white;
-  border: none;
-  border-radius: 4px;
+  background: linear-gradient(
+    135deg,
+    var(--primary-green, #4a7c59),
+    var(--secondary-green, #6b9d7a)
+  );
+  background-size: 200% 200%;
+  background-position: left;
+  color: white !important;
+  border: 2px solid transparent;
+  border-radius: 8px;
   cursor: pointer;
+  display: inline-block;
+  min-width: 120px;
+  text-align: center;
+  font-weight: 600;
+  transition: all 0.6s ease;
+  box-shadow: 0 2px 4px rgba(74, 124, 89, 0.2);
+}
+
+.button:hover {
+  background-position: right;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(74, 124, 89, 0.3);
+  color: white !important;
 }
