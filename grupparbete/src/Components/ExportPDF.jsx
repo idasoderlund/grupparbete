@@ -3,7 +3,8 @@ import autoTable from "jspdf-autotable";
 
 const ExportPDF = ({ gridRef }) => {
   const createPdf = (headers, data) => {
-    const doc = new jsPDF();
+    const orientation = headers.length > 8 ? "landscape" : "portrait";
+    const doc = new jsPDF({ orientation });
 
     doc.setFontSize(16);
     doc.text("Exporterad tabell", 14, 15);
