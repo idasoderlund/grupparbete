@@ -1,5 +1,5 @@
 // Ida - skapa komponent för filuppladdning
-import React, { useState } from "react";
+import { useState } from "react";
 import styles from "./UploadFile.module.css";
 
 const UploadFile = ({ onFileUpload }) => {
@@ -41,7 +41,7 @@ const UploadFile = ({ onFileUpload }) => {
           Välj fil
         </label>
         <span className={styles.fileName}>
-          {selectedFile ? selectedFile.name : ".xlsx, .csv, .xls"}
+          {selectedFile ? selectedFile.name : "Format: .xlsx"}
         </span>
       </div>
 

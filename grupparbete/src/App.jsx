@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import UploadFile from "./Components/UploadFile";
 import ExcelParser from "./Components/ExcelParser";
 import "./App.css";
@@ -7,8 +7,6 @@ function App() {
   const [file, setFile] = useState(null);
 
   const handleFileUpload = (data) => {
-    console.log("Uppladdad fil eller länk:", data);
-
     if (data instanceof File) {
       setFile(data);
     }

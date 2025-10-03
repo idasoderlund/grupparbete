@@ -9,20 +9,17 @@ import "ag-grid-community/styles/ag-grid.css";
 import "ag-grid-community/styles/ag-theme-alpine.css";
 
 const EditableTable = ({ rowData, columnDefs }) => {
-  console.log("📥 EditableTable props:", { rowData, columnDefs });
   const gridRef = useRef(null);
 
   const [tableHeight, setTableHeight] = useState(400);
-  const [tableWidth, setTableWidth] = useState(800); // pixels instead of percentage
+  const [tableWidth, setTableWidth] = useState(800);
   const [isResizing, setIsResizing] = useState(false);
 
-  // Handle mouse down on resize handle
   const handleMouseDown = (e) => {
     e.preventDefault();
     setIsResizing(true);
   };
 
-  // Handle mouse move for resizing
   React.useEffect(() => {
     const handleMouseMove = (e) => {
       if (!isResizing) return;
@@ -35,7 +32,7 @@ const EditableTable = ({ rowData, columnDefs }) => {
       const newWidth = e.clientX - rect.left;
 
       if (newHeight > 200) setTableHeight(newHeight);
-      if (newWidth > 300) setTableWidth(newWidth); // Use pixels directly
+      if (newWidth > 300) setTableWidth(newWidth);
     };
 
     const handleMouseUp = () => {
@@ -60,20 +57,20 @@ const EditableTable = ({ rowData, columnDefs }) => {
         className="ag-theme-alpine"
         style={{
           height: tableHeight,
-          width: tableWidth, // Use pixels directly
+          width: tableWidth,
           margin: "auto",
           position: "relative",
           border: "3px solid #4a7c59",
           borderRadius: "16px",
           overflow: "hidden",
-          maxWidth: "95vw", // Prevent overflow beyond viewport
+          maxWidth: "95vw",
           boxShadow:
             "0 8px 16px rgba(74, 124, 89, 0.2), 0 2px 4px rgba(0, 0, 0, 0.1)",
         }}
       >
         <AgGridReact
           theme="legacy"
-          ref={gridRef} //skickar datan i tabellen till exportPdf
+          ref={gridRef}
           rowData={rowData}
           columnDefs={columnDefs}
           defaultColDef={{
@@ -84,14 +81,14 @@ const EditableTable = ({ rowData, columnDefs }) => {
           }}
           onCellValueChanged={(params) => {
             console.log(
-              "✏️ Cell edited:",
+              "Cell edited:",
               params.colDef.field,
               "=",
               params.newValue
             );
           }}
         />
-        {/* Resize handle */}
+
         <div
           onMouseDown={handleMouseDown}
           style={{
@@ -122,7 +119,7 @@ const EditableTable = ({ rowData, columnDefs }) => {
           ></div>
         </div>
       </div>
-      {/* Resize text - utanför containern */}
+
       <div
         style={{
           textAlign: "right",
