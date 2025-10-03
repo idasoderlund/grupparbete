@@ -1,9 +1,7 @@
-// Ida - skapa komponent för filuppladdning
 import { useState } from "react";
 import styles from "./UploadFile.module.css";
 
 const UploadFile = ({ onFileUpload }) => {
-  const [googleSheetUrl, setGoogleSheetUrl] = useState("");
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -13,15 +11,6 @@ const UploadFile = ({ onFileUpload }) => {
       onFileUpload(file);
     } else {
       alert("Endast .xlsx-filer stöds just nu");
-    }
-  };
-
-  const handleGoogleSheetSubmit = (e) => {
-    e.preventDefault();
-    if (googleSheetUrl.includes("docs.google.com/spreadsheets")) {
-      onFileUpload(googleSheetUrl);
-    } else {
-      alert("Ogiltig  Google Sheet-länk");
     }
   };
 
@@ -44,21 +33,6 @@ const UploadFile = ({ onFileUpload }) => {
           {selectedFile ? selectedFile.name : "Format: .xlsx"}
         </span>
       </div>
-
-      <div className={styles.or}>eller</div>
-
-      <form onSubmit={handleGoogleSheetSubmit} className={styles.form}>
-        <input
-          type="text"
-          placeholder="Klistra in Google Sheet-länk"
-          value={googleSheetUrl}
-          onChange={(e) => setGoogleSheetUrl(e.target.value)}
-          className={styles.input}
-        ></input>
-        <button type="submit" className={styles.button}>
-          Ladda upp fil...
-        </button>
-      </form>
     </div>
   );
 };
